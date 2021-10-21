@@ -2,18 +2,20 @@ import whois
 from MySQLConnector.Connect import connect
 from Dictionar import Handler
 from Zones import SelectToCheck
+
 CHECKER = None
 
 
 def get_single(dot) -> None:
     # get connection
     conn = connect()
-    #read from file
-    #for name in Handler.generator():
-    #read from DB
-    for name in SelectToCheck.selector_to_check():
+    # read from file
+    # for name in Handler.generator():
+    # read from file
+    file = open('D:\Work\TypesWHOIS\DictOfEnglishWords\DomainsIsSet\\netZone.txt', 'r')
+    for name in file.readlines():
         try:
-            new_name = name.strip() + dot
+            new_name = name.replace('\n', '').strip() + dot
             # check income data
             av_domain = whois.whois(f"{new_name}")
             for key in av_domain.keys():
