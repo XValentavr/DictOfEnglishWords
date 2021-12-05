@@ -1,9 +1,17 @@
+"""
+This module creates local database connection
+"""
+
+# local imports
 import mysql
 from mysql.connector import MySQLConnection, Error
 
 
-# create database connect
 def connect():
+    """
+    create database connect
+    :return: database connection
+    """
     try:
         conn = mysql.connector.connect(host='localhost',
                                        database='domainsengdict',
